@@ -4,7 +4,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
+    // For GitHub Pages: set base to '/repository-name/'
+    // For custom domain: set base to '/'
+    // You can override this with BASE_PATH environment variable
+    const base = env.BASE_PATH || '/BugWise/';
+    
     return {
+      base,
       server: {
         port: 3000,
         host: '0.0.0.0',
