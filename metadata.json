@@ -1,0 +1,5 @@
+{
+  "name": "BugWise AI",
+  "description": "BugWise is an intelligent, AI-powered platform designed to proactively detect, predict, and help resolve recurring software bugs. It analyzes bug reports, logs, and performance data to uncover hidden patterns and provide root cause analysis.",
+  "requestFramePermissions": []
+}
