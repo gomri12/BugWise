@@ -33,7 +33,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "Building with BASE_PATH=/${{ github.event.repository.name }}/"
+          npm run build
         env:
           NODE_ENV: production
           BASE_PATH: /${{ github.event.repository.name }}/
@@ -41,6 +43,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      - name: Verify build output
+        run: |
+          echo "Build output:"
+          ls -la dist/
+          echo "HTML content:"
+          head -20 dist/index.html
+          echo "Checking base path in HTML:"
+          grep -o 'src="[^"]*"' dist/index.html || echo "No script src found"
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
