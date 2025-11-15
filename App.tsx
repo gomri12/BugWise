@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Integrations from './components/Integrations';
 import DashboardPreview from './components/DashboardPreview';
+import DeeperInsights from './components/DeeperInsights';
 import Vision from './components/Vision';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Hero />
         <Features />
         <DashboardPreview />
+        <DeeperInsights />
         <Integrations />
         <Vision />
         <CTA />

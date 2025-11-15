@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const BugWiseLogo: React.FC = () => (
@@ -20,24 +19,48 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: 'Features', href: '#features' },
     { name: 'Dashboard', href: '#dashboard' },
+    { name: 'Insights', href: '#insights' },
     { name: 'Integrations', href: '#integrations' },
     { name: 'Vision', href: '#vision' },
   ];
+  
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const headerElement = document.getElementById('main-header');
+      const headerOffset = headerElement ? headerElement.offsetHeight : 64; // Fallback to 64px (h-16)
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+      });
+    }
+
+    // Close mobile menu on click
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-dark/80 backdrop-blur-sm border-b border-slate-700/50">
+    <header id="main-header" className="sticky top-0 z-50 bg-brand-dark/80 backdrop-blur-sm border-b border-slate-700/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <BugWiseLogo />
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-sm font-medium text-slate-300 hover:text-brand-blue transition-colors">
+              <a key={link.name} href={link.href} onClick={(e) => handleSmoothScroll(e, link.href)} className="text-sm font-medium text-slate-300 hover:text-brand-blue transition-colors">
                 {link.name}
               </a>
             ))}
           </nav>
           <div className="flex items-center space-x-4">
-            <a href="#cta" className="hidden sm:inline-block bg-brand-blue hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+            <a href="#cta" onClick={(e) => handleSmoothScroll(e, '#cta')} className="hidden sm:inline-block bg-brand-blue hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
               Request Demo
             </a>
             <div className="md:hidden">
@@ -53,11 +76,11 @@ const Header: React.FC = () => {
           <div className="md:hidden pb-4">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-base font-medium text-slate-300 hover:text-brand-blue transition-colors">
+                <a key={link.name} href={link.href} onClick={(e) => handleSmoothScroll(e, link.href)} className="text-base font-medium text-slate-300 hover:text-brand-blue transition-colors">
                   {link.name}
                 </a>
               ))}
-              <a href="#cta" onClick={() => setIsMenuOpen(false)} className="bg-brand-blue hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg transition-colors text-center">
+              <a href="#cta" onClick={(e) => handleSmoothScroll(e, '#cta')} className="bg-brand-blue hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg transition-colors text-center">
                 Request Demo
               </a>
             </nav>

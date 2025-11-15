@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const IntegrationLogo: React.FC<{ src: string, alt: string }> = ({ src, alt }) => (
@@ -10,7 +9,7 @@ const IntegrationLogo: React.FC<{ src: string, alt: string }> = ({ src, alt }) =
 const integrations = [
     { name: 'Jira', src: 'https://cdn.worldvectorlogo.com/logos/jira-1.svg' },
     { name: 'GitHub', src: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg' },
-    { name: 'Datadog', src: 'https://cdn.worldvectorlogo.com/logos/datadog-icon.svg' },
+    { name: 'Datadog', src: 'https://www.svgrepo.com/show/353635/datadog.svg' },
     { name: 'Splunk', src: 'https://cdn.worldvectorlogo.com/logos/splunk-1.svg' },
     { name: 'Sentry', src: 'https://cdn.worldvectorlogo.com/logos/sentry-3.svg' },
     { name: 'GitLab', src: 'https://cdn.worldvectorlogo.com/logos/gitlab.svg' },
@@ -32,7 +31,7 @@ const Integrations: React.FC = () => {
                     {integrations.map(integration => (
                         <div key={integration.name} className="flex justify-center items-center p-6 bg-brand-light-dark rounded-xl border border-slate-700 hover:border-brand-blue/50 transition-colors duration-300">
                            <img
-                            className="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                            className="h-10 object-contain transition-all duration-300"
                             src={integration.src}
                             alt={integration.name}
                            />
