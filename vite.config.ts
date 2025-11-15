@@ -6,8 +6,9 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     // For GitHub Pages: set base to '/repository-name/'
     // For custom domain: set base to '/'
+    // For local development: use '/' (or set BASE_PATH env var)
     // You can override this with BASE_PATH environment variable
-    const base = env.BASE_PATH || '/BugWise/';
+    const base = env.BASE_PATH || (mode === 'production' ? '/BugWise/' : '/');
     
     return {
       base,
