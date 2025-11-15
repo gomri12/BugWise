@@ -35,6 +35,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          NODE_ENV: production
           BASE_PATH: /${{ github.event.repository.name }}/
 
       - name: Setup Pages

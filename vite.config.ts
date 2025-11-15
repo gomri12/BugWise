@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
     // For custom domain: set base to '/'
     // For local development: use '/' (or set BASE_PATH env var)
     // You can override this with BASE_PATH environment variable
-    const base = env.BASE_PATH || (mode === 'production' ? '/BugWise/' : '/');
+    const base = process.env.BASE_PATH || env.BASE_PATH || (mode === 'production' ? '/BugWise/' : '/');
     
     return {
       base,
