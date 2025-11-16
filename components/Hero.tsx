@@ -1,5 +1,6 @@
 
 import React from 'react';
+import videoSrc from '../media/Cinematic_Tech_Video_Generation.mp4';
 
 const Hero: React.FC = () => {
   return (
@@ -21,6 +22,22 @@ const Hero: React.FC = () => {
             <a href="#features" className="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
               Learn More
             </a>
+          </div>
+        </div>
+        
+        <div className="mt-16 max-w-5xl mx-auto animate-fade-in-up">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-brand-blue/20 border border-slate-700/50">
+            <video 
+              className="w-full h-auto"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src={videoSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
